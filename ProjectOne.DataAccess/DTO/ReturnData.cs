@@ -1,4 +1,4 @@
-﻿namespace ProjectOne.DTO
+﻿namespace ProjectOne.DataAccess.DTO
 {
     public class ReturnData
     {

@@ -1,7 +1,7 @@
-﻿using ProjectOne.DTO;
-using ProjectOne.IService;
+﻿using ProjectOne.DataAccess.DTO;
+using ProjectOne.DataAccess.IService;
 
-namespace ProjectOne.Service
+namespace ProjectOne.DataAccess.Service
 {
     public class AccountService : IAccountService
     {

@@ -1,6 +1,6 @@
-﻿using ProjectOne.DTO;
+﻿using ProjectOne.DataAccess.DTO;
 
-namespace ProjectOne.IService
+namespace ProjectOne.DataAccess.IService
 {
     public interface IAccountService
     {

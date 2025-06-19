@@ -1,13 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ProjectOne.DTO;
-using ProjectOne.IService;
+using ProjectOne.DataAccess.DTO;
+using ProjectOne.DataAccess.IService;
 
 namespace ProjectOne.Controllers
 {
-
-
-
     [Route("api/[controller]")]
     [ApiController]
     public class AccountController : ControllerBase
