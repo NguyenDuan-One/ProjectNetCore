@@ -13,6 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAccountService,AccountService>();
+builder.Services.AddScoped<ICategoryService,CategoryService>();
 
 var app = builder.Build();
 

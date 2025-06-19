@@ -4,12 +4,15 @@ using ProjectOne.DataAccess.IService;
 
 namespace ProjectOne.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CategoryController : Controller
     {
         ICategoryService _categoryService;
         public CategoryController(ICategoryService categoryService) {
             _categoryService = categoryService;
         }
+        [HttpPost]
         public Task<List<Category>> Index(CategoryRequestData categoryRequestData)
         {
             try
