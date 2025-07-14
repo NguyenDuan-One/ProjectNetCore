@@ -22,6 +22,6 @@ namespace ProjectOne.DataAccess.DBContext
         // public DbSet<YourEntity> YourEntities { get; set; }
 
         // Example:
-        public DbSet<Category>? Categorys { get; set; }
+        public DbSet<Category>? Category { get; set; }
     }
 }

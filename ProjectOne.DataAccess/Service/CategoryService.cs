@@ -22,16 +22,16 @@ namespace ProjectOne.DataAccess.Service
             try
             {
                 var lstCategory = new List<Category>();
-
                 if (!string.IsNullOrEmpty(categoryRequestData?.Name))
                 {
+                    lstCategory = _dBContext.Category?.ToList();
                     return lstCategory.Where(x => x.name.ToLower().Contains(categoryRequestData.Name.ToLower())).ToList();
                 }
                 else
                 {
-                    lstCategory = _dBContext.Categorys.ToList();
+                    // Fix for CS8604: Ensure _dBContext.Categorys is not null before calling ToList()  
+                    lstCategory = _dBContext.Category?.ToList() ?? new List<Category>();
                     return lstCategory;
-
                 }
             }
             catch (Exception ex)

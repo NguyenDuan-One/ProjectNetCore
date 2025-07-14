@@ -13,6 +13,7 @@ namespace ProjectOne.DataAccess.DTO
         public bool is_delete { get; set; }
         public string create_user { get; set; }
         public DateTime create_date { get; set; }
+        public AppInfor? app_infor { get; set; }
     }
 
     public class CategoryRequestData
