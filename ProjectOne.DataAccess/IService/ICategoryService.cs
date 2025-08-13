@@ -10,5 +10,6 @@ namespace ProjectOne.DataAccess.IService
     public interface ICategoryService
     {
         Task<List<Category>> GetAllCategory(CategoryRequestData categoryRequestData);
+        Task<ReturnData> InsertDataCategory(CategoryInsertData categoryInsertData);
     }
 }

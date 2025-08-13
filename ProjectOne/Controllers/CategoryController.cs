@@ -9,21 +9,39 @@ namespace ProjectOne.Controllers
     public class CategoryController : Controller
     {
         ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService) {
+        public CategoryController(ICategoryService categoryService)
+        {
             _categoryService = categoryService;
         }
-        [HttpPost]
-        public Task<List<Category>> Index(CategoryRequestData categoryRequestData)
+
+
+        [HttpPost("GetAll")]
+        public async Task<ActionResult> GetAll(CategoryRequestData categoryRequestData)
         {
             try
             {
-                return _categoryService.GetAllCategory(categoryRequestData);
+                var data = new List<Category>();
+                data = await _categoryService.GetAllCategory(categoryRequestData);
+                return Ok(data);
             }
             catch (Exception ex)
             {
                 throw new Exception("Error while fetching categories", ex);
             }
+        }
 
+        [HttpPost("InsertData")]
+        public async Task<ActionResult> InsertData(CategoryInsertData requestData)
+        {
+            try
+            {
+                var rs = await _categoryService.InsertDataCategory(requestData);
+                return Ok(rs);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

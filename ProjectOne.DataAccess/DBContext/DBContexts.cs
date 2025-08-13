@@ -23,5 +23,6 @@ namespace ProjectOne.DataAccess.DBContext
 
         // Example:
         public DbSet<Category>? Category { get; set; }
+        public DbSet<AppInfor>? AppInfor { get; set; }
     }
 }

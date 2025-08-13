@@ -1,19 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProjectOne.DataAccess.DBContext;
+﻿using ProjectOne.DataAccess.DBContext;
 using ProjectOne.DataAccess.DTO;
 using ProjectOne.DataAccess.IService;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProjectOne.DataAccess.Service
 {
     public class CategoryService : ICategoryService
     {
-        DBContext.DBContexts _dBContext;
-        public CategoryService(DBContext.DBContexts dBContext)
+        DBContexts _dBContext;
+        public CategoryService(DBContexts dBContext)
         {
             _dBContext = dBContext;
         }
@@ -24,13 +18,13 @@ namespace ProjectOne.DataAccess.Service
                 var lstCategory = new List<Category>();
                 if (!string.IsNullOrEmpty(categoryRequestData?.Name))
                 {
-                    lstCategory = _dBContext.Category?.ToList();
+                    lstCategory =  _dBContext.Category?.ToList();
                     return lstCategory.Where(x => x.name.ToLower().Contains(categoryRequestData.Name.ToLower())).ToList();
                 }
                 else
                 {
                     // Fix for CS8604: Ensure _dBContext.Categorys is not null before calling ToList()  
-                    lstCategory = _dBContext.Category?.ToList() ?? new List<Category>();
+                    lstCategory = _dBContext.Category?.ToList();
                     return lstCategory;
                 }
             }
@@ -38,6 +32,46 @@ namespace ProjectOne.DataAccess.Service
             {
                 throw new Exception("Error while fetching categories", ex);
             }
+        }
+
+        public async Task<ReturnData> InsertDataCategory(CategoryInsertData categoryInsertData)
+        {
+            var returnData = new ReturnData();
+            try
+            {
+                if(categoryInsertData==null || String.IsNullOrEmpty(categoryInsertData.name)){
+                    returnData.ReturnCode = -1;
+                    returnData.ReturnMessage = "Dữ liệu không hợp lệ!";
+                    return await Task.FromResult(returnData);
+                }
+
+                var req = new Category()
+                {
+                    name = categoryInsertData.name,
+                    is_delete = false,
+                    create_date = DateTime.Now,
+                    create_user="Fxhp60068"
+                };
+
+                _dBContext.Category.Add(req);
+                var response=_dBContext.SaveChanges();//trả về số dòng được thay đổi
+                if (response == 0)
+                {
+                    returnData.ReturnCode = -2;
+                    returnData.ReturnMessage = "Thêm mới thất bại!";
+                    return await Task.FromResult(returnData);
+                }
+                returnData.ReturnCode = 1;
+                returnData.ReturnMessage = "Thêm mới thành công!";
+                return await Task.FromResult(returnData);
+            }
+            catch(Exception ex)
+            {
+                returnData.ReturnCode = -99;
+                returnData.ReturnMessage = ex.Message;
+                return await Task.FromResult(returnData);
+            }
+           
         }
     }
 }
