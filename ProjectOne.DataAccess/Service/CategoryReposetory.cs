@@ -4,10 +4,10 @@ using ProjectOne.DataAccess.IService;
 
 namespace ProjectOne.DataAccess.Service
 {
-    public class CategoryService : ICategoryService
+    public class CategoryReposetory : ICategoryRepository
     {
         DBContexts _dBContext;
-        public CategoryService(DBContexts dBContext)
+        public CategoryReposetory(DBContexts dBContext)
         {
             _dBContext = dBContext;
         }

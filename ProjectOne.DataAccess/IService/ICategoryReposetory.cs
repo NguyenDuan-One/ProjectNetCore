@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOne.DataAccess.IService
 {
-    public interface ICategoryService
+    public interface ICategoryRepository
     {
         Task<List<Category>> GetAllCategory(CategoryRequestData categoryRequestData);
         Task<ReturnData> InsertDataCategory(CategoryInsertData categoryInsertData);

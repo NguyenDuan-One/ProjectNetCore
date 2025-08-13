@@ -8,8 +8,8 @@ namespace ProjectOne.Controllers
     [ApiController]
     public class CategoryController : Controller
     {
-        ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        ICategoryRepository _categoryService;
+        public CategoryController(ICategoryRepository categoryService)
         {
             _categoryService = categoryService;
         }
