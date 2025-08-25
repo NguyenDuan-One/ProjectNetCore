@@ -1,10 +1,15 @@
-﻿using ProjectOne.DataAccess.DTO;
+﻿using ProjectOne.DataAccess.DBContext;
+using ProjectOne.DataAccess.DTO;
 using ProjectOne.DataAccess.IService;
 
 namespace ProjectOne.DataAccess.Service
 {
-    public class AccountService : IAccountService
+    public class AccountGenericReponsetory : GenericReposetory<AccountDTO>, IAccountGenericReponsetory
     {
+        public AccountGenericReponsetory(DBContexts dbContexts) : base(dbContexts)
+        {
+        }
+
         public async Task<ReturnData> AccountLogin(AccountLoginRequestData accountRequestData)
         {
             try

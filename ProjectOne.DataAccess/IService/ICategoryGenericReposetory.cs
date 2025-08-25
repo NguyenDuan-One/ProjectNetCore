@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectOne.DataAccess.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOne.DataAccess.IService
 {
-    public interface IGenericReposetory<T> where T : class
+    public interface ICategoryGenericReposetory : IGenericReposetory<Category>
     {
-        public Task<List<T>> GetAll();
-        public Task<int> Insert(T entity);
     }
 }

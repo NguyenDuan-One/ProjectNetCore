@@ -13,8 +13,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 // Registering services
-builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountGenericReponsetory, AccountGenericReponsetory>();
 builder.Services.AddScoped<ICategoryRepository, CategoryReposetory>();
+builder.Services.AddScoped<ICategoryGenericReposetory, CategoryGenericReponsetory>();
 
 var app = builder.Build();
 

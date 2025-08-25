@@ -9,8 +9,8 @@ namespace ProjectOne.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private IAccountService _accountService;
-        public AccountController(IAccountService accountService)
+        private IAccountGenericReponsetory _accountService;
+        public AccountController(IAccountGenericReponsetory accountService)
         {
             _accountService = accountService;
         }

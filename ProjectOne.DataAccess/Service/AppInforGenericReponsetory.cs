@@ -1,4 +1,5 @@
-﻿using ProjectOne.DataAccess.DTO;
+﻿using ProjectOne.DataAccess.DBContext;
+using ProjectOne.DataAccess.DTO;
 using ProjectOne.DataAccess.IService;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,12 @@ using System.Threading.Tasks;
 
 namespace ProjectOne.DataAccess.Service
 {
-    public class AppInforServicecs : IAppInfor
+    public class AppInforGenericReponsetory :  GenericReposetory<AppInfor>
     {
+        public AppInforGenericReponsetory(DBContexts dbContexts) : base(dbContexts)
+        {
+        }
+
         public Task<List<AppInfor>> GetAllAppInfor()
         {
             throw new NotImplementedException();

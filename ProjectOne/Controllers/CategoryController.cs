@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjectOne.DataAccess.DTO;
 using ProjectOne.DataAccess.IService;
+using ProjectOne.DataAccess.Service;
 
 namespace ProjectOne.Controllers
 {
@@ -9,9 +10,11 @@ namespace ProjectOne.Controllers
     public class CategoryController : Controller
     {
         ICategoryRepository _categoryService;
-        public CategoryController(ICategoryRepository categoryService)
+        ICategoryGenericReposetory _categoryGenericReposetory;
+        public CategoryController(ICategoryRepository categoryService, ICategoryGenericReposetory categoryGenericReposetory)
         {
             _categoryService = categoryService;
+            _categoryGenericReposetory = categoryGenericReposetory;
         }
 
 
@@ -22,6 +25,21 @@ namespace ProjectOne.Controllers
             {
                 var data = new List<Category>();
                 data = await _categoryService.GetAllCategory(categoryRequestData);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error while fetching categories", ex);
+            }
+        }
+
+        [HttpPost("GetAllGenderic")]
+        public async Task<ActionResult> GetAllGenderic()
+        {
+            try
+            {
+                var data = new List<Category>();
+                data = await _categoryGenericReposetory.GetAll();
                 return Ok(data);
             }
             catch (Exception ex)

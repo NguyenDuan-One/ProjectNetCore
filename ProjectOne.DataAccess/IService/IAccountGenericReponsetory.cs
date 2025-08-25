@@ -2,7 +2,7 @@
 
 namespace ProjectOne.DataAccess.IService
 {
-    public interface IAccountService
+    public interface IAccountGenericReponsetory:IGenericReposetory<DTO.AccountDTO>
     {
         Task<ReturnData> AccountLogin(AccountLoginRequestData accountRequestData);
     }
