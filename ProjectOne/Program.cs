@@ -3,6 +3,7 @@ using ProjectOne.MiddelWare;
 using ProjectOne.DataAccess.Service;
 using ProjectOne.DataAccess.DBContext;
 using Microsoft.EntityFrameworkCore;
+using ProjectOne.DataAccess.UnitOfWork;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add context services 
@@ -16,6 +17,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAccountGenericReponsetory, AccountGenericReponsetory>();
 builder.Services.AddScoped<ICategoryRepository, CategoryReposetory>();
 builder.Services.AddScoped<ICategoryGenericReposetory, CategoryGenericReponsetory>();
+builder.Services.AddScoped<IAppInforGenericReponsetory, AppInforGenericReponsetory>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProjectOne.DataAccess.Service
 {
-    public class AppInforGenericReponsetory :  GenericReposetory<AppInfor>
+    public class AppInforGenericReponsetory :  GenericReposetory<AppInfor>,IAppInforGenericReponsetory
     {
         public AppInforGenericReponsetory(DBContexts dbContexts) : base(dbContexts)
         {

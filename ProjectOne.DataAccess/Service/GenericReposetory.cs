@@ -12,7 +12,8 @@ namespace ProjectOne.DataAccess.Service
     public class GenericReposetory<T> : IGenericReposetory<T> where T : class
     {
         DBContexts _dBContext;
-        public GenericReposetory(DBContexts dbContexts) {
+        public GenericReposetory(DBContexts dbContexts)
+        {
             _dBContext = dbContexts;
         }
 
@@ -21,10 +22,11 @@ namespace ProjectOne.DataAccess.Service
             return _dBContext.Set<T>().ToList();
         }
 
-        public Task<int> Insert(T entity)
+        public async Task<int> Insert(T entity)
         {
-             _dBContext.Add(entity);
-            return _dBContext.SaveChangesAsync();
+            _dBContext.Add(entity);
+            //return _dBContext.SaveChangesAsync();
+            return 1;
         }
     }
 }

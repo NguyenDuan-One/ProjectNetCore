@@ -1,8 +1,10 @@
 ﻿
 
+using ProjectOne.DataAccess.DTO;
+
 namespace ProjectOne.DataAccess.IService
 {
-    public interface IAppInforGenericReponsetory : IGenericReposetory<DTO.AppInfor>
+    public interface IAppInforGenericReponsetory : IGenericReposetory<AppInfor>
     {
     }
 }
